@@ -1,4 +1,4 @@
-import {  useNavigate} from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { useState } from "react"
 import { useAuth } from "./security/AuthContext"
 
@@ -11,7 +11,6 @@ export default function LoginComponent(){
     const [showErrorMessage, setErroruccessMessage] = useState(false)
     const navigate = useNavigate()
     const authContext = useAuth()
-
 
 
 
@@ -33,8 +32,6 @@ export default function LoginComponent(){
 
     return(
       <div className = "Login">
-        {/* <SuccessMessageComponent></SuccessMessageComponent> */}
-        {/* <ErrorMessageComponent></ErrorMessageComponent> */}
         {showErrorMessage && <div className="ErrorMessage">Authentication Failed. Check credentials.</div>}
         <div className="LoginForm">
             <div>
