@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from "react";
-import { executeBasicAuthentication } from "../api/AuthenticationApiService";
+import { executeBasicAuthentication, executeJWTauthentication } from "../api/AuthenticationApiService";
 import { apiClient } from "../api/ApiClient";
 
 export const AuthContext = createContext()
@@ -16,7 +16,7 @@ export default function AuthProvider({children}){
     const [token,setToken] = useState(null)
 
 
-/*
+/* Without authentication
     function login(username, password){
         if(username === "fatih" && password === "dummy"){
             setAuthenticated(true)
@@ -32,7 +32,7 @@ export default function AuthProvider({children}){
     }
 */
 
-
+/* With basic authentication
    async function login(username, password){
 
         const basicAuthToken = 'Basic ' + window.btoa(username + ":" + password)
@@ -48,6 +48,39 @@ export default function AuthProvider({children}){
 
             apiClient.interceptors.request.use(
                 (config) => {config.headers.Authorization=basicAuthToken
+                return config
+                }
+            )
+            return true
+
+        }else{
+            logout()
+            return false
+
+        }
+    }catch{
+        logout()
+        return false
+    }
+    }
+    */
+
+    // With JWT authentication
+   async function login(username, password){
+
+        try{
+            
+        const response = await executeJWTauthentication(username, password)
+
+        if(response.status == 200){
+
+            const jwtToken = 'Bearer ' + response.data.token
+            setAuthenticated(true)
+            setUsername(username)
+            setToken(jwtToken)
+
+            apiClient.interceptors.request.use(
+                (config) => {config.headers.Authorization = jwtToken
                 return config
                 }
             )
