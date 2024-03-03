@@ -11,4 +11,4 @@ export const executeBasicAuthentication = (token) => apiClient.get(`/basicauth`,
 
 //This is for JWT authentication
 export const executeJWTauthentication = (username,password) => apiClient.post(`/authenticate`,
-{username, password})
+{username, password},{ withCredentials: true })

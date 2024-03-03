@@ -6,9 +6,9 @@ import { useAuth } from "./security/AuthContext"
 export default function LoginComponent(){
 
 
-    const [username, setUserName] = useState("fatih")
-    const [password, setPassword] = useState("fatih")
-    const [showErrorMessage, setErroruccessMessage] = useState(false)
+    const [username, setUserName] = useState("")
+    const [password, setPassword] = useState("")
+    const [showErrorMessage, setErrorMessage] = useState(false)
     const navigate = useNavigate()
     const authContext = useAuth()
 
@@ -26,7 +26,7 @@ export default function LoginComponent(){
         if(await authContext.login(username,password)){
             navigate(`/welcome/${username}`)
         }else{
-            setErroruccessMessage(true)
+            setErrorMessage(true)
         }
     }
 

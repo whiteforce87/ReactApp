@@ -1,10 +1,35 @@
 import {Link} from "react-router-dom"
 import { useAuth } from "./security/AuthContext"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 export default function HeaderComponent(){
 
     const authContext = useAuth()
-    const isAuthenticated = authContext.isAuthenticated
+
+    const [isAuthenticated,setIsAuthenticated] =  useState(false)
+
+
+    useEffect(() =>{
+        const accessToken = localStorage.getItem("accessToken");
+
+    if( authContext.isAuthenticated || accessToken != null){
+        setIsAuthenticated(true)
+    }else{
+        setIsAuthenticated(false)
+    }
+
+
+    
+    },[localStorage.getItem("accessToken")])
+
+
+    
+
+
+    
+
+
 
     function logout () {
         authContext.logout()

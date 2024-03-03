@@ -14,7 +14,7 @@ export default function WelcomeComponent(){
     function callHelloWorldRestApi(){
         
         //retrieveHelloWorldBean()
-        retrieveHelloWorldBeanPathVariable("fatih", authContext.token)
+        retrieveHelloWorldBeanPathVariable("fatih", authContext.accessToken)
         .then((response) => successfullResponse(response))
         .catch((error) => errorResponse(error))
         .finally(() => console.log('cleanup'))
