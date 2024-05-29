@@ -27,7 +27,7 @@ const PrivateRoutes = () => {
 
 
 
-  return accessToken != null ? <Outlet /> : <Navigate to="/login" />;
+  return accessToken !== null ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoutes;

@@ -1,8 +1,7 @@
 import { createContext, useState, useContext } from "react";
-import { executeBasicAuthentication, executeJWTauthentication } from "../api/AuthenticationApiService";
+import { executeJWTauthentication } from "../api/AuthenticationApiService";
 import { apiClient } from "../api/ApiClient";
 import { useEffect } from "react";
-import { Navigate, useNavigate} from "react-router-dom"
 import axios from "axios";
 
 
@@ -108,7 +107,7 @@ export default function AuthProvider({children}){
         originalRequest._retry = true;
         try {
           // Attempt to refresh token
-          if(refreshToken == null){
+          if(refreshToken === null){
             const newRefreshToken = localStorage.getItem("refreshToken")
             setRefreshToken(newRefreshToken)
           }
@@ -142,7 +141,7 @@ export default function AuthProvider({children}){
 
             apiClient.interceptors.response.eject(responseInterceptor)
         };
-}, [accessToken,refreshToken]);
+}, [accessToken,refreshToken,logout, refreshNewToken, username]);
 
 
     const refreshNewToken = async () => {
@@ -175,7 +174,7 @@ export default function AuthProvider({children}){
     const response = await executeJWTauthentication(username, password)
     console.log("Response: ",response)
 
-    if(response.status == 200){
+    if(response.status === 200){
         
         setRefreshToken(response.data.refreshToken)
         setAccessToken(response.data.accessToken)

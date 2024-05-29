@@ -3,8 +3,6 @@ import { useContext } from "react"
 
 export default function FooterComponent(){
 
-    const authContext = useContext(AuthContext)
-
 
     return(
       <footer className = "Footer">

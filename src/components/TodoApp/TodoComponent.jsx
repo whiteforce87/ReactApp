@@ -25,7 +25,7 @@ export default function ListTodoComponent (){
     
     function retrieveTodo(){
 
-        if(id != -1){
+        if(id !== -1){
         retrieveTodoApi(username, id)
         .then(response =>{
         setDescription(response.data.description)
@@ -44,7 +44,7 @@ function onSubmit(values){
         done:false
     } 
 
-    if(id == -1){
+    if(id === -1){
         createTodoApi(username,todo)
         .then(response => {
             console.log(response.data)
@@ -74,7 +74,7 @@ function validate(values){
     if(values.description.length < 5){
         errors.description = 'Enter at least 5 characters'
     }
-    if(values.targetDate == null || values.targetDate == '' || !moment(values.targetDate).isValid()){
+    if(values.targetDate === null || values.targetDate === '' || !moment(values.targetDate).isValid()){
         errors.targetDate = 'Enter a valid targetDate'
     }
     console.log(values)

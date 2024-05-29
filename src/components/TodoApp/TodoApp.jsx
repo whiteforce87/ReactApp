@@ -1,5 +1,5 @@
 import "./TodoApp.css"
-import { BrowserRouter, Routes, Route, useNavigate, Navigate} from "react-router-dom"
+import { BrowserRouter, Routes, Route, useNavigate} from "react-router-dom"
 import LogoutComponent from "./LogoutComponent"
 import FooterComponent from "./FooterComponent"
 import HeaderComponent from "./HeaderComponent"
@@ -10,7 +10,6 @@ import LoginComponent from "./LoginComponent"
 import AuthProvider, {useAuth} from "./security/AuthContext"
 import TodoComponent from "./TodoComponent"
 import { useEffect } from "react"
-import { apiClient } from "./api/ApiClient"
 import PrivateRoutes from "./security/PrivateRoutes"
 
 
@@ -24,7 +23,7 @@ function AuthenticatedRoute({children}){
         if (!authContext.isAuthenticated) {
             // Redirect to login page
             let accessToken = localStorage.getItem("accessToken");
-            if(accessToken != null){
+            if(accessToken !== null){
                 authContext.isAuthenticated = true
                 authContext.setAccessToken(accessToken)
             }else{

@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom"
 import { useAuth } from "./security/AuthContext"
 import { useEffect, useState } from "react"
-import axios from "axios"
 
 export default function HeaderComponent(){
 
@@ -13,7 +12,7 @@ export default function HeaderComponent(){
     useEffect(() =>{
         const accessToken = localStorage.getItem("accessToken");
 
-    if( authContext.isAuthenticated || accessToken != null){
+    if( authContext.isAuthenticated || accessToken !== null){
         setIsAuthenticated(true)
     }else{
         setIsAuthenticated(false)
@@ -21,7 +20,7 @@ export default function HeaderComponent(){
 
 
     
-    },[localStorage.getItem("accessToken")])
+    },[localStorage.getItem("accessToken"),authContext.isAuthenticated])
 
 
     

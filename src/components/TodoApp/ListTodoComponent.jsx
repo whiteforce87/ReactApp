@@ -5,7 +5,7 @@ import { useAuth } from "./security/AuthContext";
 
 export default function ListTodoComponent(){
 
-    const today = new Date();
+    //const today = new Date();
    /*
     const targetDate = new Date(today.getFullYear(), today.getMonth() + 2 , today.getDay())
 
