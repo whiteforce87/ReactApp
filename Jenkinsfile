@@ -8,6 +8,9 @@ pipeline {
             label 'nodejs'
         }
     }
+    environment {
+        CI = 'false'
+    }
     stages {
         stage('Install Dependencies') {
             steps {
@@ -17,7 +20,7 @@ pipeline {
             }
         }
         stage('Build Frontend') {
-            steps {
+             steps {
                 echo "--------build started-------"
                 sh 'npm run build'
                 echo "--------build ended-------"
@@ -80,7 +83,7 @@ pipeline {
                 sh 'helm package frontend'
             }
         }
-        
+
         stage('Deploy Frontend with Helm') {
             steps {
                 echo 'Deploying frontend with Helm...'
