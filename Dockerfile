@@ -1,7 +1,7 @@
 # Stage 1: Build the React app
 FROM node:18.19.1-alpine
 
-RUN groupadd -r appgroup && useradd -r -g appgroup appuser
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 USER appuser
 
