@@ -1,10 +1,16 @@
 # Stage 1: Build the React app
 FROM node:18.19.1-alpine
 
+RUN groupadd -r appgroup && useradd -r -g appgroup appuser
+
+USER appuser
+
 WORKDIR /app
 
 COPY package.json ./
 COPY package-lock.json ./
+
+RUN chown -R appuser:appgroup /app
 
 ENV CI=false
 
