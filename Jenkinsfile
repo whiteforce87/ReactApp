@@ -36,7 +36,7 @@ pipeline {
                         "files": [
                             {
                                 "pattern": "build/**/*",
-                                "target": "frontend-npm-local/{1}",
+                                "target": "frontend-npm-local/",
                                 "flat": "false",
                                 "props" : "${properties}",
                                 "exclusions": [ "*.sha1", "*.md5"]
