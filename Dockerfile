@@ -3,20 +3,17 @@ FROM node:18.19.1-alpine
 
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-USER appuser
-
 WORKDIR /app
 
-COPY package.json ./
-COPY package-lock.json ./
-
-RUN chown -R appuser:appgroup /app
+# Kullanıcıya ait olan tüm dosyaları kopyala
+COPY --chown=appuser:appgroup package.json ./
+COPY --chown=appuser:appgroup package-lock.json ./
 
 ENV CI=false
 
 RUN npm install
 
-COPY . .
+COPY --chown=appuser:appgroup . .
 
 RUN npm run build
 
