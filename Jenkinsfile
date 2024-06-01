@@ -87,7 +87,7 @@ pipeline {
         stage('Deploy Frontend with Helm') {
             steps {
                 echo 'Deploying frontend with Helm...'
-                sh 'helm install frontend-0.1.0.tgz'
+                sh 'helm install frontend frontend-0.1.0.tgz'
             }
         }
     }
