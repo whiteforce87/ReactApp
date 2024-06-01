@@ -2,10 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: todoFrontendApp
+  name: todofrontendapp
   namespace: todoapp # namespace belirtildi
   labels:
-    app: todoFrontend
+    app: todofrontend
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -19,7 +19,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: todoFrontendApp
+                name: todofrontendapp
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
