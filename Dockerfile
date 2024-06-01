@@ -1,5 +1,5 @@
 # Stage 1: Build the React app
-FROM node:18.19.1-alpine
+FROM node:18.19.1-alpine AS build
 
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
