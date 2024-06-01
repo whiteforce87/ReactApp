@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "frontend.fullname" . }}
+  namespace: todoapp # namespace belirtildi
+  labels:
+    app: {{ include "frontend.name" . }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "frontend.name" . }}
+---
