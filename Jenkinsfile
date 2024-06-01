@@ -87,7 +87,7 @@ pipeline {
         stage('Deploy Frontend with Helm') {
             steps {
                 echo 'Deploying frontend with Helm...'
-                sh 'helm upgrade --install frontend frontend-0.1.0.tgz --set image.repository=${frontendImageName} --set image.tag=${version}'
+                sh 'helm install frontend-0.1.0.tgz'
             }
         }
     }
