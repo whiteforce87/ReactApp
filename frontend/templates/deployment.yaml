@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "frontend.fullname" . }}
+  name: todoFrontendApp
   namespace: todoapp
   labels:
-    app: {{ include "frontend.name" . }}
+    app: todoFrontend
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "frontend.name" . }}
+      app: todoFrontend
   template:
     metadata:
       labels:
-        app: {{ include "frontend.name" . }}
+        app: todoFrontend
     spec:
       containers:
         - name: {{ .Chart.Name }}
