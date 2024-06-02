@@ -141,13 +141,13 @@ export default function AuthProvider({children}){
 
             apiClient.interceptors.response.eject(responseInterceptor)
         };
-}, [accessToken,refreshToken,logout, refreshNewToken, username]);
+}, [accessToken,refreshToken]);
 
 
     const refreshNewToken = async () => {
         try {
             console.log("new refreshToken:",refreshToken)
-            const response = await axios.post('http://localhost:8080/refreshToken', {
+            const response = await axios.post('http://localhost:8081/refreshToken', {
             refreshToken:refreshToken, withCredentials: true });
             const newAccesToken =response.data.accessToken;
             console.log("NewAccessToken: ",newAccesToken);
