@@ -10,6 +10,7 @@ service:
   port: 80
   externalPort: 80
 
+# Dns ve alan adı için true yapıyoruz
 ingress:
   enabled: false
   annotations:
