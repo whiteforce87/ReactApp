@@ -9,7 +9,7 @@ WORKDIR /app
 COPY --chown=appuser:appgroup package.json ./
 COPY --chown=appuser:appgroup package-lock.json ./
 
-ENV CI=false
+#ENV CI=false
 
 RUN npm install
 
